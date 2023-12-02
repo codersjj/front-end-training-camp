@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.esm.browser.js"
+      }
+    }
+  </script>
+
+  <div id="app">
+    <ul>
+      <li v-for="(value, key, index) in person" :key="key">
+        {{ index }}. {{ key }}: {{ value }}
+      </li>
+    </ul>
+    <button @click="addObjKey">为对象添加属性</button>
+    <button @click="deleteObjKey">删除对象的一个属性</button>
+
+    <ul>
+      <li v-for="(item, index) in colors" :key="item">
+        {{ index }}. {{ item }}
+      </li>
+    </ul>
+    <button @click="addArrItem">为数组新增元素</button>
+    <button @click="updateArrItem">更新数组元素</button>
+    <button @click="changeArrLength">修改数组长度</button>
+  </div>
+
+  <script type="module">
+    import Vue from 'vue'
+
+    new Vue({
+      el: '#app',
+      data: {
+        person: {
+          name: 'jack',
+          age: 22
+        },
+        colors: ['red', 'blue', 'orange']
+      },
+      methods: {
+        addObjKey() {
+          this.person.country = 'China'
+          console.log(this.person) // person 对象中已存在 country 属性，但是视图中并没有显示出来，即视图并没有进行响应，也就是说给对象添加属性这一操作不是响应式的
+        },
+        deleteObjKey() {
+          delete this.person.age
+          console.log(this.person) // person 对象中已经删除了 age 属性，但是视图中并没有体现，即视图并没有进行响应，也就是说删除对象属性这一操作不是响应式的
+        },
+
+        addArrItem() {
+          // this.colors.push('yellow')
+          this.colors[3] = 'yellow'
+          console.log(this.colors) // colors 数组中已存在 yellow，但是视图中并没有显示出来，即视图并没有进行响应，也就是说通过索引的方式给数组添加元素这一操作不是响应式的
+        },
+        updateArrItem() {
+          // this.colors.splice(1, 1, 'skyblue')
+          this.colors[1] = 'skyblue'
+          console.log(this.colors) // colors 数组中已将 blue 修改为 skyblue，但是视图中并没有显示出来，即视图并没有进行响应，也就是说通过索引的方式修改数组元素这一操作不是响应式的
+        },
+        changeArrLength() {
+          // this.colors.splice(2)
+          this.colors.length = 2
+          console.log(this.colors) // colors 数组的长度已变成 2，但是视图中并没有体现，即视图并没有进行响应，也就是说修改数组长度这一操作不是响应式的
+        }
+      }
+    })
+
+    // 可见，添加或删除对象的属性，以索引的形式设置数组项，修改数组的长度，这几种操作都无法触发数据进行响应，因为 Vue 2 的内部使用到的 Object.defineProperty() 无法监听到这几种操作
+    // 怎么解决呢？可以通过改用 Proxy 方式实现，这也是 Vue 3 中响应式系统内部的实现方式
+  </script>
+</body>
+</html>
