@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { getCommentList, commitComment } from '@/api/xss'
-
+import DOMPurify from 'dompurify'
 
 // 获取评论列表
 const contentList = ref([])
@@ -18,11 +18,11 @@ const comment = ref('')
 const handleCommit = async () => {
   // 处理输入内容
   // 阻止 html 注入
-  const htmlRegExp = /<[a-z][\s\S]*>/i
-  if (htmlRegExp.test(comment.value)) {
-    alert('评论内容包含风险，请求被阻止')
-    return
-  }
+  // const htmlRegExp = /<[a-z][\s\S]*>/i
+  // if (htmlRegExp.test(comment.value)) {
+  //   alert('评论内容包含风险，请求被阻止')
+  //   return
+  // }
 
   const { data } = await commitComment(comment.value)
   contentList.value.unshift({ ...data, content: comment.value })
@@ -40,7 +40,18 @@ const handleCommit = async () => {
     <ul class="content-list">
       <li class="content-item" v-for="item in contentList" :key="item.id">
         <div class="author">{{ item.author }}</div>
-        <div class="content" v-html="item.content"></div>
+        <div
+          class="content"
+          v-html="
+            DOMPurify.sanitize(item.content, {
+              // 禁止标签
+              FORBID_TAGS: ['style'],
+              // 禁止标签上的属性
+              FORBID_ATTR: ['style']
+            })
+          "
+        >
+        </div>
       </li>
     </ul>
   </div>
