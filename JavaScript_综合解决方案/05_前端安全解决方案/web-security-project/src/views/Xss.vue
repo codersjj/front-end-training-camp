@@ -8,14 +8,24 @@ const contentList = ref([])
 const loadCommentList = async () => {
   const { list } = await getCommentList()
   contentList.value = list
+
+  // contentList.value.unshift({ ...list[0], content: `<img style='position: fixed;left: 0;top: 0;width: 100vw;height: 100vh;z-index: 9999999;' src='https://res.lgdsunday.club/virus.jpg' onload='alert("此处会注入一段代码，即 xss 攻击。这段攻击会导致页面跳转至特定网站"); window.location.href="https://www.imooc.com"'/>` })
 }
 loadCommentList()
 
 // 提交评论
 const comment = ref('')
 const handleCommit = async () => {
+  // 处理输入内容
+  // 阻止 html 注入
+  const htmlRegExp = /<[a-z][\s\S]*>/i
+  if (htmlRegExp.test(comment.value)) {
+    alert('评论内容包含风险，请求被阻止')
+    return
+  }
+
   const { data } = await commitComment(comment.value)
-  contentList.value.unshift(data)
+  contentList.value.unshift({ ...data, content: comment.value })
 }
 </script>
 
