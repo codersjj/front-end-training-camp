@@ -1,13 +1,20 @@
 const inputEl = document.getElementById('search-input')
-let timer = null
-inputEl.addEventListener('keyup', e => {
-  if (timer) {
-    clearTimeout(timer)
+inputEl.addEventListener('keyup', debounce(function(e) {
+  console.log(e.target.value, this)
+}, 600))
+
+function debounce(fn, delay = 500) {
+  // timer 是闭包中的
+  let timer = null
+
+  return function() {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      // 清空定时器
+      timer = null
+    }, delay)
   }
-  timer = setTimeout(() => {
-    // 模拟触发 change 事件
-    console.log(e.target.value)
-    // 清空定时器
-    timer = null
-  }, 500)
-})
+}
