@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <p></p>
+    </div>
+  </div>
+
+  <script>
+    // 命令式编程
+    // 举例 2：在指定的 div 的子元素 div 的子元素 p 元素中，展示变量 msg 的值
+
+    // 1. 获取到第一层的 div
+    const divEl = document.querySelector('#app')
+    // 2. 获取到第二层的 div
+    const childDivEl = divEl.querySelector('div')
+    // 3. 获取到第三层的 p
+    const pEl = childDivEl.querySelector('p')
+    // 4. 定义变量 msg
+    const msg = 'Hello World'
+    // 5. 为该 p 元素设置文本内容
+    pEl.textContent = msg
+  </script>
+</body>
+</html>
