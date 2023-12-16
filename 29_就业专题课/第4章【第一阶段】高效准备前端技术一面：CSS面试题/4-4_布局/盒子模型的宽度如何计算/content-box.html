@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 请问 #div1 的 offsetWidth 为多少 */
+    /* offsetWidth = width + padding + border，或者是 border-box 的 width */
+    /* 不包括 margin */
+    /* 因此，这里 offsetWidth = 100px + 10px * 2 + 1px * 2 = 122px */
+    #div1 {
+      margin: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    this is div1
+  </div>
+
+  <script>
+    console.log(document.querySelector('#div1').offsetWidth) // 122
+  </script>
+</body>
+</html>

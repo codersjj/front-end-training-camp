@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 如何让 #div1 的 offsetWidth 等于 100px？ */
+    #div1 {
+      margin: 10px;
+      /* 将 box-sizing 设置为 border-box */
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    this is div1
+  </div>
+
+  <script>
+    console.log(document.querySelector('#div1').offsetWidth) // 100
+  </script>
+</body>
+</html>
