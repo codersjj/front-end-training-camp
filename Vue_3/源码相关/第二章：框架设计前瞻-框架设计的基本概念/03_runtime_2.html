@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    const vnode = {
+      type: 'div',
+      props: {
+        class: 'test'
+      },
+      children: [
+        'hello render'
+      ]
+    }
+    // 承载的容器
+    const container = document.querySelector('#app')
+    // 渲染函数
+    function render(vnode, container) {
+      if (!vnode) return
+      const { type, props, children } = vnode
+      const node = document.createElement(type)
+      if (props) {
+        Object.keys(props).forEach(prop => {
+          node.setAttribute(prop, props[prop])
+        })
+      }
+      if (children && children.length) {
+        children.forEach(child => {
+          node.append(child)
+        })
+      }
+      container.append(node)
+    }
+
+    render(vnode, container)
+  </script>
+</body>
+</html>
