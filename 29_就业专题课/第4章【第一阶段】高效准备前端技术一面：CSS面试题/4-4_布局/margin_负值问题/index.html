@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 50px;
+    }
+
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .float-left {
+      float: left;
+    }
+
+    .container {
+      border: 1px solid #333;
+      padding: 10px;
+    }
+
+    .container .item {
+      border: 1px solid #000;
+      width: 100px;
+      height: 100px;
+    }
+
+    .container .border-blue {
+      border-color: blue;
+    }
+
+    .container .border-red {
+      border-color: red;
+    }
+
+    .test-margin-top {
+      margin-top: -60px;
+    }
+
+    .test-margin-left {
+      margin-left: -60px;
+    }
+
+    .test-margin-bottom {
+      margin-bottom: -30px;
+    }
+
+    .test-margin-right {
+      margin-right: -30px;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    margin-top 和 margin-left 为负值时，元素分别向上、向左移动；
+    margin-right 为负值时，右侧的元素向左移动，元素自身不受影响；
+    margin-left 为负值时，下方的元素向上移动，元素自身不受影响；
+   -->
+
+   <p>用于测试 margin-top、margin-bottom 的负值情况</p>
+   <div class="container">
+    <div class="item border-blue test-margin-bottom">
+      this is item1
+    </div>
+    <div class="item border-red">
+      this is item2
+    </div>
+   </div>
+
+   <p>用于测试 margin-left、margin-right 的负值情况</p>
+   <div class="container clearfix">
+    <div class="item border-blue float-left test-margin-right">
+      this is item3
+    </div>
+    <div class="item border-red float-left">
+      this is item4
+    </div>
+   </div>
+</body>
+</html>
