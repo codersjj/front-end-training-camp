@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const count = 10000
+
+    // 增加一万个 DOM 节点
+    console.time('DOM 操作')
+    for (let i = 0; i < count; i++) {
+      const newEl = document.createElement('div')
+      document.body.append(newEl)
+    }
+    console.timeEnd('DOM 操作')
+
+    // 增加一万个 JavaScript 对象
+    console.time('JavaScript 操作')
+    const divList = []
+    for (let i = 0; i < count; i++) {
+      const newEl = {
+        type: 'div'
+      }
+      divList.push(newEl)
+    }
+    console.timeEnd('JavaScript 操作')
+
+    // dom 的操作要比 js 的操作耗时多得多，也就是说 dom 操作的性能比 js 操作的性能低
+  </script>
+</body>
+</html>
