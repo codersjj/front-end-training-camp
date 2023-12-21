@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      background-color: #f1f1f1;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .bfc {
+      overflow: hidden; /* 触发 BFC */
+    }
+  </style>
+</head>
+<body>
+  <!--
+    BFC：Block Formatting Context，块级格式化上下文
+    一块独立渲染区域，内部元素的渲染不会影响外部的元素
+
+    形成 BFC 的常见条件：
+      float 不是 none
+      position 是 absolute 或 fixed
+      overflow 不是 visible 和 clip 的块级元素
+      display 是 inline-block、flex 等
+      等等
+
+    BFC 的常见应用
+      清除浮动（当然，你也可以通过 clear 清除浮动）
+   -->
+
+  <div class="container bfc">
+    <img class="left" style="margin-left: 30px;" src="https://www.imooc.com/static/img/index/logo.png" alt="logo">
+    <p class="bfc">一段文字</p>
+  </div>
+</body>
+</html>
