@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, reactive } = Vue
+
+    const app = createApp({
+      template: '<h1>{{ proxyTarget.name }}</h1>',
+      setup() {
+        const target = {
+          name: '张三'
+        }
+
+        const proxyTarget = reactive(target)
+
+        return {
+          proxyTarget
+        }
+      }
+    })
+
+    app.mount('#app')
+
+    // 1. 通过 reactive 方法，声明一个响应式数据
+    // 2. Vue 的 compiler 模块会编译 template 的内容，生成 render 函数
+    // 3. Vue 的 runtime 模块会执行 render 函数，返回虚拟 DOM 树，之后再渲染成真实 DOM
+  </script>
+</body>
+</html>
