@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圣杯布局</title>
+  <style>
+    body {
+      min-width: 550px;
+    }
+
+    #header {
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    #container {
+      padding: 0 150px 0 200px;
+
+      .column {
+        float: left;
+      }
+
+      #center {
+        width: 100%;
+        background-color: #f66;
+      }
+
+      #left {
+        /* 向左移动其包含块的宽度值，在浮动的情况下，最终就能实现向上位移的效果 */
+        /* 相当于是从上面挨着前一个元素的右侧开始位移 */
+        margin-left: -100%;
+
+        position: relative;
+        right: 200px;
+
+        width: 200px;
+        background-color: #6f6;
+      }
+
+      #right {
+        /* margin-left: -150px;
+
+        position: relative;
+        left: 150px; */
+        /* 在外界看来，此时该元素没有宽度，在浮动的情况下，就可以浮动到上面了 */
+        margin-right: -150px;
+
+        width: 150px;
+        background-color: #3ce;
+      }
+    }
+
+    #footer {
+      text-align: center;
+      background-color: #acc;
+
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">我是 header</div>
+  <div id="container">
+    <div id="center" class="column">center</div>
+    <div id="left" class="column">left</div>
+    <div id="right" class="column">right</div>
+  </div>
+  <div id="footer">我是 footer</div>
+
+</body>
+</html>
