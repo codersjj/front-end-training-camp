@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双飞翼布局</title>
+  <style>
+    body {
+      min-width: 550px;
+    }
+
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    #header {
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    #container {
+      .column {
+        float: left;
+      }
+
+      #center {
+        width: 100%;
+        background-color: #f66;
+
+        .wrapper {
+          /* 通过 margin 在左右两侧留白 */
+          margin: 0 150px 0 200px;
+        }
+      }
+
+      #left {
+        margin-left: -100%;
+
+        width: 200px;
+        background-color: #6f6;
+      }
+
+      #right {
+        margin-left: -150px;
+
+        width: 150px;
+        background-color: #3ce;
+      }
+    }
+
+    #footer {
+      text-align: center;
+      background-color: #acc;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">我是 header</div>
+  <div id="container" class="clearfix">
+    <div id="center" class="column">
+      <div class="wrapper">center</div>
+    </div>
+    <div id="left" class="column">left</div>
+    <div id="right" class="column">right</div>
+  </div>
+  <div id="footer">我是 footer</div>
+</body>
+</html>
