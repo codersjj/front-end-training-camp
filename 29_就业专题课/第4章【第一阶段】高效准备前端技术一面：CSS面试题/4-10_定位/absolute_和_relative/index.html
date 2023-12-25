@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*
+      relative 依据自身定位
+      absolute 依据最近一层的定位元素（如果有）定位，或者相对于初始包含块（<html> 元素所在的包含块，相当于视口）定位
+    */
+
+    body {
+      margin: 20px;
+    }
+
+    .relative {
+      position: relative;
+      top: 20px;
+      left: 50px;
+
+      border: 1px solid #000;
+      width: 500px;
+      height: 300px;
+
+      .absolute {
+        position: absolute;
+        top: 20px;
+        left: 50px;
+
+        border: 1px solid #66f;
+        width: 300px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <p>absolute 和 relative 定位问题</p>
+  <div class="relative">
+    <div class="absolute">
+      this is absolute
+    </div>
+  </div>
+
+</body>
+</html>
