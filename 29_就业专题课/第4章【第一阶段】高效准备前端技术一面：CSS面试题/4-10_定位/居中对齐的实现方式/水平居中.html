@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin-bottom: 30px;
+      border: 1px solid #333;
+      padding: 50px;
+
+      &:has(.inline) {
+        text-align: center;
+      }
+
+      &:has(.absolute) {
+        position: relative;
+      }
+
+      .inline, .block, .absolute {
+        background-color: #ffa;
+      }
+
+      .block {
+        margin: 0 auto;
+        width: 300px;
+      }
+
+      .absolute {
+        position: absolute;
+
+        /* left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 300px; */
+
+        /* left: 50%;
+        margin-left: -150px;
+        width: 300px; */
+
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    根据要水平居中的元素的类型，可分三种情况：
+    1. inline 元素：
+      text-align: center;
+    2. block 元素：
+      margin: 0 auto;（注意：需要显示设置好宽度）
+    3. absolute 的元素：
+      （方式 1）left: 50%; margin-left: -该元素的宽度值;
+      （方式 2）left: 50%; transform: translateX(-50%);
+      （方式 3）left: 0; right: 0; margin: 0 auto;（注意：需要显示设置好宽度）
+   -->
+
+   <div class="container">
+    <span class="inline">
+      this is inline item
+    </span>
+   </div>
+   <div class="container">
+    <div class="block">
+      this is block item
+    </div>
+   </div>
+   <div class="container">
+    <div class="absolute">
+      this is absolute item
+    </div>
+   </div>
+</body>
+</html>
