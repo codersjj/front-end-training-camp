@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin-bottom: 30px;
+      border: 1px solid #000;
+      padding: 50px;
+      height: 200px;
+
+      &:has(.absolute) {
+        position: relative;
+      }
+
+      .inline, .absolute {
+        background-color: #0f6;
+      }
+
+      .inline {
+        line-height: 200px;
+      }
+
+      .absolute {
+        /* position: absolute;
+        top: 50%;
+        margin-top: -40px;
+        height: 80px; */
+
+        /* position: absolute;
+        top: 50%;
+        transform: translateY(-50%); */
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    根据要垂直居中的元素的类型，可分两种情况：
+    1. inline 元素：
+      将 line-height 设置为父元素的 height 值
+    2. absolute 的元素：
+      （方式 1）top: 50%; margin-top: -该元素的高度值;（注意：需要显示设置好高度）
+      （方式 2）top: 50%; transform: translateY(-50%);
+      （方式 3）top: 0; bottom: 0; margin: auto 0;（注意：需要显示设置好高度）
+   -->
+   <div class="container">
+    <span class="inline">
+      this is an inline item
+    </span>
+   </div>
+   <div class="container">
+    <div class="absolute">
+      this is an absolute item
+    </div>
+   </div>
+</body>
+</html>
