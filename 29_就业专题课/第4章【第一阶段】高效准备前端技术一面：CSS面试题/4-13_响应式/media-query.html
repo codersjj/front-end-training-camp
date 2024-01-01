@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* iPhone5 或者更小的尺寸，以 iPhone5 的宽度（320px）比例设置 font-size */
+    @media only screen and (max-width: 374px) {
+      html {
+        font-size: 86px;
+      }
+    }
+    /* iPhone6/7/8/x */
+    @media only screen and (min-width: 375px) and (max-width: 413px) {
+      html {
+        font-size: 100px;
+      }
+    }
+    /* iPhone6p 或者更大的尺寸，以 iPhone6p 的宽度（414px）比例设置 font-size */
+    @media only screen and (min-width: 414px) {
+      html {
+        font-size: 110px;
+      }
+    }
+
+    body {
+      font-size: .16rem;
+    }
+
+    .box {
+      width: 1rem;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    this is div
+  </div>
+</body>
+</html>
