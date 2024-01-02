@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      /* width: 10vw;
+      height: 10vh; */
+      /* width: 10vmax;
+      height: 10vmax; */
+      width: 10vmin;
+      height: 10vmin;
+      background-color: #6f6;
+    }
+  </style>
+</head>
+<body>
+  <p>vw、vh 测试</p>
+  <div class="container"></div>
+
+  <script>
+    /*
+      window.screen.height // 屏幕高度
+      window.innerHeight // 网页视口高度
+      document.body.clientHeight // body 高度
+    */
+
+    /*
+      vh：网页视口高度的 1/100
+      vw：网页视口宽度的 1/100
+      vmax：取两者最大值
+      vmin：取两者最小值
+    */
+
+    // window.innerWidth === 100vw
+    // window.innerHeight === 100vh
+  </script>
+</body>
+</html>
