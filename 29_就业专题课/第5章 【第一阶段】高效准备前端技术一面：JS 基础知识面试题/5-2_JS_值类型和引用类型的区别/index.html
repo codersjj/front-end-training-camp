@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /* 值类型 */
+    let u // undefined
+    const b = true
+    const num = 100
+    const s = 'hello'
+    const sym = Symbol()
+
+    /* 引用类型 */
+    const o = { age: 20 }
+    const arr = ['apple', 'orange']
+    // null 属于 primitive value，但也可以看成是特殊的引用类型，指针指向为空地中
+    const n = null
+    // 函数是特殊引用类型，但不用于存储数据，所以没有“拷贝、复制函数”这一说
+    function fn() {}
+
+    /*
+      当然，JavaScript 中的数据类型通常分为 primitive value 类型和 Object 类型
+      primitive value 类型包括 Boolean、Number、String、Null、Undefined、Symbol、BigInt，除了 primitive value 类型，其它的都是 Object 类型
+    */
+  </script>
+</body>
+</html>
