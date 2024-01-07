@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /* typeof 可以判断所有值类型 */
+    let a;
+    const b = true
+    const num = 100
+    const str = 'hello'
+    const s = Symbol('foo')
+    const bigNum = BigInt(Number.MAX_SAFE_INTEGER)
+    console.log(typeof a) // undefined
+    console.log(typeof b) // boolean
+    console.log(typeof num) // number
+    console.log(typeof str) // string
+    console.log(typeof s) // symbol
+    console.log(typeof bigNum) // bigint
+
+    /* 引用类型 */
+    /* typeof 可以判断函数类型 */
+    console.log(typeof console.log) // function
+    console.log(typeof function() {}) // function
+    /* typeof 能识别引用类型（但做不到更精确的识别） */
+    console.log(typeof null) // object
+    console.log(typeof { x: 100 }) // object
+    console.log(typeof ['a', 'b']) // object
+  </script>
+</body>
+</html>
