@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      参考文档：
+        https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+        https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+
+      truthy 值（在 Boolean 上下文中被认为是 true 的值）和 falsy 值（在 Boolean 上下文中被认为是 false 的值）
+
+      falsy 值（9 个）：
+        false
+        NaN
+        0
+        -0
+        0n
+        ''
+        null
+        undefined
+        document.all
+
+      truthy 值：
+        除了 falsy 值之外的所有值
+
+      假设有一个变量 a，如果 !!a === true，a 就是 truthy 值，如果 !!a === false，a 就是 falsy 值
+    */
+
+    console.log(!!false === false) // true
+    console.log(!!NaN === false) // true
+    console.log(!!0 === false) // true
+    console.log(!!-0 === false) // true
+    console.log(!!0n === false) // true
+    console.log(!!'' === false) // true
+    console.log(!!null === false) // true
+    console.log(!!undefined === false) // true
+    console.log(!!document.all === false) // true
+
+    const a = true
+    if (a) {
+      console.log('a is a truthy value')
+    }
+
+    const b = 100
+    if (b) {
+      console.log('b is a truthy value')
+    }
+
+    let c
+    if (c) {
+      console.log('c is a truthy value')
+    }
+
+    const d = ''
+    if (d) {
+      console.log('d is a truthy value')
+    }
+
+    const e = null
+    if (e) {
+      console.log('e is a truthy value')
+    }
+  </script>
+
+  <script>
+    /*
+      逻辑判断
+    */
+   console.log(100 && 0) // 0
+   console.log('' || 'hello') // hello
+   console.log(!window.abc) // true
+  </script>
+</body>
+</html>

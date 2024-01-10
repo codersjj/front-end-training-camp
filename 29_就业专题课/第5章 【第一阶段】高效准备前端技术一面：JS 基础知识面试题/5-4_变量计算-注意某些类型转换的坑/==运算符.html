@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+     参考文档：
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#number_coercion
+    */
+
+    console.log(null == undefined) // true
+    console.log('' == 0) // true
+    console.log('  ' == 0) // true
+    console.log('0' == 0) // true
+    console.log('100' == 100) // true
+    console.log(0 == false) // true
+    console.log('' == false) // true
+
+    console.log(null == undefined) // true
+    console.log(document.all == undefined) // true
+    console.log(document.all == null) // true
+    // null/undefined 和其它类型的数据（除了它们两者之间比较，以及除了 document.all 这个特殊的对象（已废弃）） == 比较时，结果都是 false
+    console.log(null == 0) // false
+    console.log(undefined == 0) // false
+
+    // 在不考虑 document.all 的情况下，如果想要判断是否是 null 或者 undefined，可以使用 ==，其它情况一律使用 ===
+    const obj = { x: 100 }
+    if (obj.a == null) {
+      console.log('obj.a is a nullish value or document.all')
+    }
+    // 相当于（近似于）：
+    if (obj.a === null || obj.a === undefined) {console.log('obj.a is a nullish value')}
+
+  </script>
+</body>
+</html>
