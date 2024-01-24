@@ -8,17 +8,5 @@
 <body>
 
   <script src="./class-extends-demo.js"></script>
-  <script>
-    console.log(Student.prototype.__proto__)
-    console.log(Person.prototype)
-    console.log(Student.prototype.__proto__ === Person.prototype)
-
-    /*
-      注意：
-        class 是 ES6 语法规范，由 ECMA 委员会发布；
-        ECMA 只规定语法规则（即我们代码的书写规范），不规定如何实现，具体实现由 JS 引擎决定；
-        以上实现方式（见原型链图解）都是 V8 引擎（主流的 JS 引擎）的实现方式，也是主流的；
-    */
-  </script>
 </body>
 </html>
