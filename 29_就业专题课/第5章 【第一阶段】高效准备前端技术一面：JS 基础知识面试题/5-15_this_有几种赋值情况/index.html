@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    /*
+      this 会在函数调用时动态绑定，有以下几种情况：
+        1. 作为普通函数调用
+        2. 作为对象的方法被调用
+        3. 使用 call/apply/bind 调用
+        4. 在 class 方法中调用
+        5. 箭头函数
+    */
+
+    function foo() {
+      console.log(this)
+    }
+    // 1. 作为普通函数调用
+    foo() // window
+    // 3. 使用 call/apply/bind 调用
+    foo.call({ x: 100 }) // { x: 100 }
+    const bar = foo.bind({ x: 200 })
+    bar() // { x: 200 }
+
+    const person1 = {
+      name: 'alan',
+      sayHi() {
+        console.log(this)
+      },
+      wait() {
+        setTimeout(function() {
+          console.log('person1 wait', this)
+        })
+      }
+    }
+    // 2. 作为对象的方法被调用
+    person1.sayHi() // person1 对象
+    person1.wait() // window（function() { console.log(this) } 会在定时结束后作为独立函数调用）
+
+    const person2 = {
+      name: 'jack',
+      sayHi() {
+        console.log(this)
+      },
+      wait() {
+        // 5. 箭头函数
+        setTimeout(() => {
+          console.log('person2 wait', this)
+        })
+      }
+    }
+    // 2. 作为对象的方法被调用
+    person2.sayHi() // person2 对象
+    person2.wait() // person2 对象（() => { console.log(this) }，箭头函数中的 this 由上层作用域中的 this 决定，这里即 wait() 函数中的 this，而 wait() 函数是作为 person2 对象的方法被调用，所以 wait() 函数中的 this 为 person2 对象）
+
+    class Person {
+      constructor(name) {
+        this.name = name
+      }
+
+      // 4. 在 class 方法中调用
+      sayHi() {
+        console.log(this)
+      }
+    }
+    const p1 = new Person('alice')
+    p1.sayHi() // p1 对象
+
+  </script>
+</body>
+</html>
