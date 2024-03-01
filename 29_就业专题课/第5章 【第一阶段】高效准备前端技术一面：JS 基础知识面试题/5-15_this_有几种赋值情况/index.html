@@ -65,11 +65,16 @@
 
       // 4. 在 class 方法中调用
       sayHi() {
-        console.log(this)
+        console.log(this, this.name)
       }
     }
     const p1 = new Person('alice')
     p1.sayHi() // p1 对象
+
+    // 补充：原型中的 this
+    p1.__proto__.sayHi()
+
+    p1.__proto__.sayHi.call(p1)
 
   </script>
 </body>
